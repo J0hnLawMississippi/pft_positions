@@ -1,0 +1,645 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/J0hnLawMississippi/pft_positions/schema/position-snapshot.v0.schema.json",
+  "title": "PFT Position Snapshot v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "spec_date",
+    "snapshot_id",
+    "as_of",
+    "published_at",
+    "publisher",
+    "group_context",
+    "provenance",
+    "normalization",
+    "positions",
+    "aggregate_signals"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "position-snapshot.v0"
+    },
+    "spec_date": {
+      "const": "2026-04"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 8
+    },
+    "as_of": {
+      "$ref": "#/$defs/dateTime"
+    },
+    "published_at": {
+      "$ref": "#/$defs/dateTime"
+    },
+    "prev_snapshot_ref": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_id",
+        "entity_type"
+      ],
+      "properties": {
+        "entity_id": {
+          "type": "string"
+        },
+        "entity_type": {
+          "enum": [
+            "tasknode_agent",
+            "group_bot",
+            "user_client",
+            "service"
+          ]
+        },
+        "public_key": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        }
+      }
+    },
+    "group_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "group_id",
+        "snapshot_scope"
+      ],
+      "properties": {
+        "group_id": {
+          "type": "string"
+        },
+        "thread_id": {
+          "type": "string"
+        },
+        "snapshot_scope": {
+          "enum": [
+            "network",
+            "cohort",
+            "workspace"
+          ]
+        },
+        "valuation_ccy": {
+          "type": "string"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "collector",
+        "sources",
+        "confidence",
+        "completeness",
+        "content_hash"
+      ],
+      "properties": {
+        "collector": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "version"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_type",
+              "source_id",
+              "fetched_at"
+            ],
+            "properties": {
+              "source_type": {
+                "enum": [
+                  "api",
+                  "wallet",
+                  "manual",
+                  "derived"
+                ]
+              },
+              "source_id": {
+                "type": "string"
+              },
+              "fetched_at": {
+                "$ref": "#/$defs/dateTime"
+              },
+              "request_id": {
+                "type": "string"
+              },
+              "endpoint": {
+                "type": "string"
+              },
+              "tx_hash": {
+                "type": "string"
+              },
+              "cid": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "numeric_encoding",
+        "timestamp_encoding",
+        "pnl_sign_convention"
+      ],
+      "properties": {
+        "numeric_encoding": {
+          "const": "decimal-string"
+        },
+        "timestamp_encoding": {
+          "const": "rfc3339-utc"
+        },
+        "pnl_sign_convention": {
+          "enum": [
+            "profit-positive",
+            "loss-negative"
+          ]
+        },
+        "quantity_sign_convention": {
+          "enum": [
+            "side-and-positive-quantity"
+          ]
+        }
+      }
+    },
+    "positions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/position"
+      }
+    },
+    "aggregate_signals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sentiment_index",
+        "positioning_bias",
+        "churn_risk_score"
+      ],
+      "properties": {
+        "sentiment_index": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1
+        },
+        "positioning_bias": {
+          "enum": [
+            "risk_on",
+            "risk_off",
+            "neutral"
+          ]
+        },
+        "churn_risk_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "strategy_hint": {
+          "enum": [
+            "follow_trend",
+            "contrarian",
+            "mixed",
+            "none"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9]\\d*)(\\.\\d+)?$"
+    },
+    "ccxt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exchange_id"
+      ],
+      "properties": {
+        "exchange_id": {
+          "type": "string"
+        },
+        "market_symbol": {
+          "type": "string"
+        },
+        "market_id": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "settle": {
+          "type": "string"
+        }
+      }
+    },
+    "position": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "position_id",
+        "instrument_type",
+        "asset_class",
+        "venue",
+        "account_ref",
+        "side",
+        "quantity",
+        "unit",
+        "valuation_ccy",
+        "mark_price",
+        "notional_value",
+        "cost_basis",
+        "pnl_unrealized",
+        "pnl_realized",
+        "risk"
+      ],
+      "properties": {
+        "position_id": {
+          "type": "string"
+        },
+        "instrument_type": {
+          "enum": [
+            "delta_one",
+            "option",
+            "yield"
+          ]
+        },
+        "asset_class": {
+          "enum": [
+            "crypto",
+            "equity",
+            "commodity",
+            "fx",
+            "index",
+            "rate"
+          ]
+        },
+        "venue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "venue_id",
+            "venue_type"
+          ],
+          "properties": {
+            "venue_id": {
+              "type": "string"
+            },
+            "venue_type": {
+              "enum": [
+                "cex",
+                "dex",
+                "onchain_protocol"
+              ]
+            },
+            "chain_id": {
+              "type": "integer"
+            },
+            "network": {
+              "type": "string"
+            }
+          }
+        },
+        "account_ref": {
+          "type": "string"
+        },
+        "ccxt": {
+          "$ref": "#/$defs/ccxt"
+        },
+        "side": {
+          "enum": [
+            "long",
+            "short",
+            "neutral"
+          ]
+        },
+        "quantity": {
+          "$ref": "#/$defs/decimal"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "valuation_ccy": {
+          "type": "string"
+        },
+        "mark_price": {
+          "$ref": "#/$defs/decimal"
+        },
+        "notional_value": {
+          "$ref": "#/$defs/decimal"
+        },
+        "cost_basis": {
+          "$ref": "#/$defs/decimal"
+        },
+        "pnl_unrealized": {
+          "$ref": "#/$defs/decimal"
+        },
+        "pnl_realized": {
+          "$ref": "#/$defs/decimal"
+        },
+        "risk": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "conviction",
+            "sentiment_score",
+            "horizon"
+          ],
+          "properties": {
+            "conviction": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "sentiment_score": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            },
+            "horizon": {
+              "enum": [
+                "intraday",
+                "swing",
+                "position",
+                "long_term"
+              ]
+            },
+            "liquidation_price": {
+              "$ref": "#/$defs/decimal"
+            },
+            "value_at_risk_1d": {
+              "$ref": "#/$defs/decimal"
+            }
+          }
+        },
+        "delta_one": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "symbol",
+            "contract_kind"
+          ],
+          "properties": {
+            "symbol": {
+              "type": "string"
+            },
+            "contract_kind": {
+              "enum": [
+                "spot",
+                "perpetual",
+                "future",
+                "swap"
+              ]
+            },
+            "entry_price": {
+              "$ref": "#/$defs/decimal"
+            },
+            "leverage": {
+              "$ref": "#/$defs/decimal"
+            }
+          }
+        },
+        "option": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "underlying",
+            "option_type",
+            "strike",
+            "expiry",
+            "style",
+            "multiplier",
+            "implied_volatility",
+            "greeks"
+          ],
+          "properties": {
+            "underlying": {
+              "type": "string"
+            },
+            "option_type": {
+              "enum": [
+                "call",
+                "put"
+              ]
+            },
+            "strike": {
+              "$ref": "#/$defs/decimal"
+            },
+            "expiry": {
+              "$ref": "#/$defs/dateTime"
+            },
+            "style": {
+              "enum": [
+                "european",
+                "american"
+              ]
+            },
+            "multiplier": {
+              "$ref": "#/$defs/decimal"
+            },
+            "implied_volatility": {
+              "$ref": "#/$defs/decimal"
+            },
+            "greeks": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "delta",
+                "gamma",
+                "vega",
+                "theta"
+              ],
+              "properties": {
+                "delta": {
+                  "$ref": "#/$defs/decimal"
+                },
+                "gamma": {
+                  "$ref": "#/$defs/decimal"
+                },
+                "vega": {
+                  "$ref": "#/$defs/decimal"
+                },
+                "theta": {
+                  "$ref": "#/$defs/decimal"
+                }
+              }
+            }
+          }
+        },
+        "yield": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "protocol",
+            "position_kind",
+            "principal",
+            "apr",
+            "apy"
+          ],
+          "properties": {
+            "protocol": {
+              "type": "string"
+            },
+            "position_kind": {
+              "enum": [
+                "staking",
+                "lending",
+                "vault",
+                "liquidity"
+              ]
+            },
+            "principal": {
+              "$ref": "#/$defs/decimal"
+            },
+            "reward_assets": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "apr": {
+              "$ref": "#/$defs/decimal"
+            },
+            "apy": {
+              "$ref": "#/$defs/decimal"
+            },
+            "lockup": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "is_locked": {
+                  "type": "boolean"
+                },
+                "unlock_at": {
+                  "$ref": "#/$defs/dateTime"
+                }
+              }
+            }
+          }
+        },
+        "position_delta": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "prev_position_ref": {
+              "type": "string"
+            },
+            "quantity_change": {
+              "$ref": "#/$defs/decimal"
+            },
+            "notional_change": {
+              "$ref": "#/$defs/decimal"
+            },
+            "churn_flag": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "raw_ref": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "instrument_type": {
+                "const": "delta_one"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "delta_one",
+              "ccxt"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "instrument_type": {
+                "const": "option"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "option",
+              "ccxt"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "instrument_type": {
+                "const": "yield"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "yield"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

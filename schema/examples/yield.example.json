@@ -1,0 +1,171 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_yield_2026-04-24T101000Z",
+  "as_of": "2026-04-24T10:10:00Z",
+  "published_at": "2026-04-24T10:10:05Z",
+  "prev_snapshot_ref": "snap_yield_2026-04-24T100500Z",
+  "publisher": {
+    "entity_id": "tasknode-yield-monitor",
+    "entity_type": "tasknode_agent",
+    "public_key": "ed25519:EXAMPLEPUBKEY3",
+    "signature": "EXAMPLESIGNATURE3"
+  },
+  "group_context": {
+    "group_id": "network-yield-cohort",
+    "thread_id": "thread-yield-live",
+    "snapshot_scope": "cohort",
+    "valuation_ccy": "USD"
+  },
+  "provenance": {
+    "collector": {
+      "id": "pft-positions-collector",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "source_type": "api",
+        "source_id": "ccxt:binance",
+        "fetched_at": "2026-04-24T10:10:01Z",
+        "request_id": "binance-earn-77",
+        "endpoint": "sapi/v1/simple-earn/flexible/position"
+      },
+      {
+        "source_type": "wallet",
+        "source_id": "rpc:arbitrum",
+        "fetched_at": "2026-04-24T10:10:02Z",
+        "tx_hash": "0x95b02167f0f57eb84d0428da4708d9563cbc18a8bece7f46f2ec6f5bb61b8d84"
+      },
+      {
+        "source_type": "derived",
+        "source_id": "protocol:usd-ai",
+        "fetched_at": "2026-04-24T10:10:03Z",
+        "cid": "bafkreie4vsxv7skua2y2h3b4x5xmhtc2asrbh7"
+      }
+    ],
+    "confidence": 0.92,
+    "completeness": 0.90,
+    "content_hash": "db0be094064b7c9d0bf4ba280f83f0f2ad7d95af20c08d2c1a074fe8dbf98088"
+  },
+  "normalization": {
+    "numeric_encoding": "decimal-string",
+    "timestamp_encoding": "rfc3339-utc",
+    "pnl_sign_convention": "profit-positive",
+    "quantity_sign_convention": "side-and-positive-quantity"
+  },
+  "positions": [
+    {
+      "position_id": "binance-staking-bnb-flex",
+      "instrument_type": "yield",
+      "asset_class": "crypto",
+      "venue": {
+        "venue_id": "binance",
+        "venue_type": "cex"
+      },
+      "account_ref": "acct:binance:earn-main",
+      "ccxt": {
+        "exchange_id": "binance",
+        "base": "BNB"
+      },
+      "side": "long",
+      "quantity": "850.00",
+      "unit": "BNB",
+      "valuation_ccy": "USD",
+      "mark_price": "598.20",
+      "notional_value": "508470.00",
+      "cost_basis": "471750.00",
+      "pnl_unrealized": "36720.00",
+      "pnl_realized": "8200.00",
+      "risk": {
+        "conviction": 0.67,
+        "sentiment_score": 0.35,
+        "horizon": "long_term",
+        "value_at_risk_1d": "15240.00"
+      },
+      "yield": {
+        "protocol": "binance-simple-earn",
+        "position_kind": "staking",
+        "principal": "850.00",
+        "reward_assets": [
+          "BNB"
+        ],
+        "apr": "0.041",
+        "apy": "0.042",
+        "lockup": {
+          "is_locked": false
+        }
+      },
+      "position_delta": {
+        "prev_position_ref": "binance-staking-bnb-flex@2026-04-24T100500Z",
+        "quantity_change": "100.00",
+        "notional_change": "59820.00",
+        "churn_flag": false
+      },
+      "tags": [
+        "carry",
+        "cex-yield"
+      ],
+      "raw_ref": "ipfs://bafkreig4me2yqztv"
+    },
+    {
+      "position_id": "arbitrum-usdai-vault-main",
+      "instrument_type": "yield",
+      "asset_class": "rate",
+      "venue": {
+        "venue_id": "usd-ai",
+        "venue_type": "onchain_protocol",
+        "chain_id": 42161,
+        "network": "arbitrum"
+      },
+      "account_ref": "0x2d4b8d7d55aef49c9c347e1546623e5f9f8a6102",
+      "side": "long",
+      "quantity": "220000.00",
+      "unit": "USDAI",
+      "valuation_ccy": "USD",
+      "mark_price": "1.0000",
+      "notional_value": "220000.00",
+      "cost_basis": "214800.00",
+      "pnl_unrealized": "5200.00",
+      "pnl_realized": "0.00",
+      "risk": {
+        "conviction": 0.74,
+        "sentiment_score": 0.18,
+        "horizon": "position",
+        "value_at_risk_1d": "3100.00"
+      },
+      "yield": {
+        "protocol": "usd-ai",
+        "position_kind": "vault",
+        "principal": "220000.00",
+        "reward_assets": [
+          "USDAI",
+          "ARB"
+        ],
+        "apr": "0.098",
+        "apy": "0.103",
+        "lockup": {
+          "is_locked": true,
+          "unlock_at": "2026-07-24T00:00:00Z"
+        }
+      },
+      "position_delta": {
+        "prev_position_ref": "arbitrum-usdai-vault-main@2026-04-24T100500Z",
+        "quantity_change": "-15000.00",
+        "notional_change": "-15000.00",
+        "churn_flag": true
+      },
+      "tags": [
+        "real-world-use-case",
+        "onchain-yield",
+        "churn-signal"
+      ],
+      "raw_ref": "ipfs://bafkreifkgm3oq7a4h"
+    }
+  ],
+  "aggregate_signals": {
+    "sentiment_index": 0.19,
+    "positioning_bias": "neutral",
+    "churn_risk_score": 0.58,
+    "strategy_hint": "contrarian"
+  }
+}

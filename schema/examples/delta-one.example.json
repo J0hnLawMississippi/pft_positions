@@ -1,0 +1,161 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_delta1_2026-04-24T100000Z",
+  "as_of": "2026-04-24T10:00:00Z",
+  "published_at": "2026-04-24T10:00:04Z",
+  "prev_snapshot_ref": "snap_delta1_2026-04-24T095500Z",
+  "publisher": {
+    "entity_id": "tasknode-group-alpha-engine",
+    "entity_type": "group_bot",
+    "public_key": "ed25519:EXAMPLEPUBKEY",
+    "signature": "EXAMPLESIGNATURE"
+  },
+  "group_context": {
+    "group_id": "network-alpha-cohort-a",
+    "thread_id": "thread-delta-one-live",
+    "snapshot_scope": "network",
+    "valuation_ccy": "USD"
+  },
+  "provenance": {
+    "collector": {
+      "id": "pft-positions-collector",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "source_type": "api",
+        "source_id": "ccxt:binance",
+        "fetched_at": "2026-04-24T10:00:01Z",
+        "request_id": "binance-req-173",
+        "endpoint": "fapiPrivateGetPositionRisk"
+      },
+      {
+        "source_type": "api",
+        "source_id": "ccxt:hyperliquid",
+        "fetched_at": "2026-04-24T10:00:02Z",
+        "request_id": "hyperliquid-req-411",
+        "endpoint": "privatePostInfo"
+      }
+    ],
+    "confidence": 0.96,
+    "completeness": 0.93,
+    "content_hash": "a9f2ad38f3d9c6d16f2d1496d4ffac8f9017ae35d0f8f291e7650f2f517f0d03"
+  },
+  "normalization": {
+    "numeric_encoding": "decimal-string",
+    "timestamp_encoding": "rfc3339-utc",
+    "pnl_sign_convention": "profit-positive",
+    "quantity_sign_convention": "side-and-positive-quantity"
+  },
+  "positions": [
+    {
+      "position_id": "binance-btcusdt-perp-main",
+      "instrument_type": "delta_one",
+      "asset_class": "crypto",
+      "venue": {
+        "venue_id": "binance",
+        "venue_type": "cex"
+      },
+      "account_ref": "acct:binance:subaccount-main",
+      "ccxt": {
+        "exchange_id": "binance",
+        "market_symbol": "BTC/USDT:USDT",
+        "market_id": "BTCUSDT",
+        "base": "BTC",
+        "quote": "USDT",
+        "settle": "USDT"
+      },
+      "side": "long",
+      "quantity": "2.2500",
+      "unit": "BTC",
+      "valuation_ccy": "USD",
+      "mark_price": "72150.5",
+      "notional_value": "162338.63",
+      "cost_basis": "154920.00",
+      "pnl_unrealized": "7418.63",
+      "pnl_realized": "1200.15",
+      "risk": {
+        "conviction": 0.78,
+        "sentiment_score": 0.41,
+        "horizon": "swing",
+        "liquidation_price": "58640.2",
+        "value_at_risk_1d": "8421.25"
+      },
+      "delta_one": {
+        "symbol": "BTCUSDT",
+        "contract_kind": "perpetual",
+        "entry_price": "68853.3",
+        "leverage": "3"
+      },
+      "position_delta": {
+        "prev_position_ref": "binance-btcusdt-perp-main@2026-04-24T095500Z",
+        "quantity_change": "0.2500",
+        "notional_change": "18312.10",
+        "churn_flag": false
+      },
+      "tags": [
+        "trend-follow",
+        "delta-engine"
+      ],
+      "raw_ref": "ipfs://bafkreigh2akiscaildc"
+    },
+    {
+      "position_id": "hyperliquid-solusd-perp-alpha",
+      "instrument_type": "delta_one",
+      "asset_class": "crypto",
+      "venue": {
+        "venue_id": "hyperliquid",
+        "venue_type": "dex"
+      },
+      "account_ref": "acct:hyperliquid:agent-14",
+      "ccxt": {
+        "exchange_id": "hyperliquid",
+        "market_symbol": "SOL/USD:USD",
+        "market_id": "SOL-PERP",
+        "base": "SOL",
+        "quote": "USD",
+        "settle": "USD"
+      },
+      "side": "short",
+      "quantity": "1800",
+      "unit": "SOL",
+      "valuation_ccy": "USD",
+      "mark_price": "173.42",
+      "notional_value": "312156.00",
+      "cost_basis": "326880.00",
+      "pnl_unrealized": "14724.00",
+      "pnl_realized": "-850.00",
+      "risk": {
+        "conviction": 0.62,
+        "sentiment_score": -0.25,
+        "horizon": "intraday",
+        "liquidation_price": "241.10",
+        "value_at_risk_1d": "19210.00"
+      },
+      "delta_one": {
+        "symbol": "SOL-PERP",
+        "contract_kind": "perpetual",
+        "entry_price": "181.60",
+        "leverage": "4"
+      },
+      "position_delta": {
+        "prev_position_ref": "hyperliquid-solusd-perp-alpha@2026-04-24T095500Z",
+        "quantity_change": "300",
+        "notional_change": "52320.00",
+        "churn_flag": false
+      },
+      "tags": [
+        "hedge",
+        "contrarian-watch"
+      ],
+      "raw_ref": "ipfs://bafkreifv4x7r26fzzh2"
+    }
+  ],
+  "aggregate_signals": {
+    "sentiment_index": 0.08,
+    "positioning_bias": "risk_on",
+    "churn_risk_score": 0.34,
+    "strategy_hint": "mixed"
+  }
+}

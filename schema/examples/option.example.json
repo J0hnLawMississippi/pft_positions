@@ -1,0 +1,111 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_option_2026-04-24T100500Z",
+  "as_of": "2026-04-24T10:05:00Z",
+  "published_at": "2026-04-24T10:05:03Z",
+  "prev_snapshot_ref": "snap_option_2026-04-24T100000Z",
+  "publisher": {
+    "entity_id": "tasknode-options-engine",
+    "entity_type": "service",
+    "public_key": "ed25519:EXAMPLEPUBKEY2",
+    "signature": "EXAMPLESIGNATURE2"
+  },
+  "group_context": {
+    "group_id": "network-volatility-desk",
+    "thread_id": "thread-options-live",
+    "snapshot_scope": "network",
+    "valuation_ccy": "USD"
+  },
+  "provenance": {
+    "collector": {
+      "id": "pft-positions-collector",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "source_type": "api",
+        "source_id": "ccxt:deribit",
+        "fetched_at": "2026-04-24T10:05:01Z",
+        "request_id": "deribit-req-991",
+        "endpoint": "private/get_positions"
+      }
+    ],
+    "confidence": 0.98,
+    "completeness": 0.95,
+    "content_hash": "5bfca4f3fc9d1e34d06f7bec7405dd8fcb563615eeb9ab53de2637675c59189e"
+  },
+  "normalization": {
+    "numeric_encoding": "decimal-string",
+    "timestamp_encoding": "rfc3339-utc",
+    "pnl_sign_convention": "profit-positive",
+    "quantity_sign_convention": "side-and-positive-quantity"
+  },
+  "positions": [
+    {
+      "position_id": "deribit-btc-20260626-80000-c",
+      "instrument_type": "option",
+      "asset_class": "crypto",
+      "venue": {
+        "venue_id": "deribit",
+        "venue_type": "cex"
+      },
+      "account_ref": "acct:deribit:vol-book-1",
+      "ccxt": {
+        "exchange_id": "deribit",
+        "market_symbol": "BTC/USD:BTC-260626-80000-C",
+        "market_id": "BTC-26JUN26-80000-C",
+        "base": "BTC",
+        "quote": "USD",
+        "settle": "BTC"
+      },
+      "side": "long",
+      "quantity": "35",
+      "unit": "contracts",
+      "valuation_ccy": "USD",
+      "mark_price": "4380.00",
+      "notional_value": "153300.00",
+      "cost_basis": "132650.00",
+      "pnl_unrealized": "20650.00",
+      "pnl_realized": "-1220.00",
+      "risk": {
+        "conviction": 0.71,
+        "sentiment_score": 0.29,
+        "horizon": "position",
+        "value_at_risk_1d": "9870.00"
+      },
+      "option": {
+        "underlying": "BTC",
+        "option_type": "call",
+        "strike": "80000",
+        "expiry": "2026-06-26T08:00:00Z",
+        "style": "european",
+        "multiplier": "1",
+        "implied_volatility": "0.56",
+        "greeks": {
+          "delta": "0.43",
+          "gamma": "0.00011",
+          "vega": "0.18",
+          "theta": "-0.021"
+        }
+      },
+      "position_delta": {
+        "prev_position_ref": "deribit-btc-20260626-80000-c@2026-04-24T100000Z",
+        "quantity_change": "5",
+        "notional_change": "21900.00",
+        "churn_flag": false
+      },
+      "tags": [
+        "vol-upside",
+        "event-risk"
+      ],
+      "raw_ref": "ipfs://bafkreia42w67vyxst9f"
+    }
+  ],
+  "aggregate_signals": {
+    "sentiment_index": 0.26,
+    "positioning_bias": "risk_on",
+    "churn_risk_score": 0.22,
+    "strategy_hint": "follow_trend"
+  }
+}
