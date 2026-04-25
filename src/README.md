@@ -1,8 +1,9 @@
 # src
 
-Reserved for future implementation work, including:
+Contains the Python reference package for the v0 position snapshot spec:
 
-- CCXT adapters for CEX/DEX position ingestion
-- On-chain adapters for protocol-native yield positions
-- Snapshot normalization and canonical hashing utilities
-- Publisher/signer integration for Task Node distribution
+- fixture-backed `parse` and `emit` CLI surfaces
+- schema and content-hash validation
+- canonical JSON and deterministic SHA-256 helpers
+
+Live adapters, CCXT ingestion, on-chain calls, and publisher/signer integrations remain outside the v0 reference-package scope.

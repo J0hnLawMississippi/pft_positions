@@ -1,0 +1,1 @@
+"""Bundled reference resources."""

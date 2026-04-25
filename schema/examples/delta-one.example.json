@@ -38,9 +38,7 @@
         "endpoint": "privatePostInfo"
       }
     ],
-    "confidence": 0.96,
-    "completeness": 0.93,
-    "content_hash": "a9f2ad38f3d9c6d16f2d1496d4ffac8f9017ae35d0f8f291e7650f2f517f0d03"
+    "content_hash": "b9e81aa92180c160f232722414f56a98d44331b803c9abed63521a9c4ddab6eb"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -76,8 +74,6 @@
       "pnl_unrealized": "7418.63",
       "pnl_realized": "1200.15",
       "risk": {
-        "conviction": 0.78,
-        "horizon": "swing",
         "liquidation_price": "58640.2",
         "value_at_risk_1d": "8421.25"
       },
@@ -125,8 +121,6 @@
       "pnl_unrealized": "14724.00",
       "pnl_realized": "-850.00",
       "risk": {
-        "conviction": 0.62,
-        "horizon": "intraday",
         "liquidation_price": "241.10",
         "value_at_risk_1d": "19210.00"
       },

@@ -1,0 +1,9 @@
+{
+  "source_type": "api",
+  "source_id": "fixture:option",
+  "fetched_at": "2026-04-24T10:05:00Z",
+  "venue": "deribit",
+  "account": "acct:fixture:option",
+  "payload": {"instrument_name": "BTC-26JUN26-80000-C", "direction": "buy", "size": "10", "mark_price_usd": "4000.00", "average_price_usd": "3500.00", "floating_profit_loss_usd": "5000.00", "iv": "0.55", "delta": "0.40", "gamma": "0.00010", "vega": "0.15", "theta": "-0.020"},
+  "normalizes_to": "../option.json"
+}

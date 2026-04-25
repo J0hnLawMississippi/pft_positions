@@ -1,0 +1,12 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_fixture_option",
+  "as_of": "2026-04-24T10:05:00Z",
+  "published_at": "2026-04-24T10:05:01Z",
+  "publisher": {"entity_id": "fixture-publisher", "entity_type": "service"},
+  "group_context": {"group_id": "fixture-group", "snapshot_scope": "network", "valuation_ccy": "USD"},
+  "provenance": {"collector": {"id": "pft-positions-fixtures", "version": "0.1.0"}, "sources": [{"source_type": "manual", "source_id": "fixture:option", "fetched_at": "2026-04-24T10:05:00Z"}], "content_hash": "2e98c5929a906c7467532ccbd30dccd07aa6a1c37b3aa40c4cdcb4894d40502e"},
+  "normalization": {"numeric_encoding": "decimal-string", "timestamp_encoding": "rfc3339-utc", "pnl_sign_convention": "profit-positive", "quantity_sign_convention": "side-and-positive-quantity"},
+  "positions": [{"position_id": "fixture-btc-call", "instrument_type": "option", "asset_class": "crypto", "venue": {"venue_id": "deribit", "venue_type": "cex"}, "account_ref": "acct:fixture:option", "ccxt": {"exchange_id": "deribit", "market_symbol": "BTC/USD:BTC-260626-80000-C"}, "side": "long", "quantity": "10", "unit": "contracts", "valuation_ccy": "USD", "mark_price": "4000.00", "notional_value": "40000.00", "cost_basis": "35000.00", "pnl_unrealized": "5000.00", "pnl_realized": "0.00", "risk": {"liquidation_price": "0.00", "value_at_risk_1d": "2500.00"}, "option": {"underlying": "BTC", "option_type": "call", "strike": "80000", "expiry": "2026-06-26T08:00:00Z", "style": "european", "multiplier": "1", "implied_volatility": "0.55", "greeks": {"delta": "0.40", "gamma": "0.00010", "vega": "0.15", "theta": "-0.020"}}}]
+}

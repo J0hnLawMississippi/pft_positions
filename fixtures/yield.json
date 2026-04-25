@@ -1,0 +1,77 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_fixture_yield",
+  "as_of": "2026-04-24T10:10:00Z",
+  "published_at": "2026-04-24T10:10:01Z",
+  "publisher": {
+    "entity_id": "fixture-publisher",
+    "entity_type": "service"
+  },
+  "group_context": {
+    "group_id": "fixture-group",
+    "snapshot_scope": "cohort",
+    "valuation_ccy": "USD"
+  },
+  "provenance": {
+    "collector": {
+      "id": "pft-positions-fixtures",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "source_type": "manual",
+        "source_id": "fixture:yield",
+        "fetched_at": "2026-04-24T10:10:00Z"
+      }
+    ],
+    "content_hash": "946bdbec1a3a15394afdea0a6feebd9cce65036458ba82bd50c4e1acc4fe8056"
+  },
+  "normalization": {
+    "numeric_encoding": "decimal-string",
+    "timestamp_encoding": "rfc3339-utc",
+    "pnl_sign_convention": "profit-positive",
+    "quantity_sign_convention": "side-and-positive-quantity"
+  },
+  "positions": [
+    {
+      "position_id": "fixture-usdai-vault",
+      "instrument_type": "yield",
+      "asset_class": "rate",
+      "venue": {
+        "venue_id": "usd-ai",
+        "venue_type": "onchain_protocol",
+        "chain_id": 42161,
+        "network": "arbitrum"
+      },
+      "account_ref": "0x0000000000000000000000000000000000000001",
+      "side": "long",
+      "quantity": "100000.00",
+      "unit": "USDAI",
+      "valuation_ccy": "USD",
+      "mark_price": "1.0000",
+      "notional_value": "100000.00",
+      "cost_basis": "100000.00",
+      "pnl_unrealized": "0.00",
+      "pnl_realized": "0.00",
+      "risk": {
+        "liquidation_price": "0.00",
+        "value_at_risk_1d": "1500.00"
+      },
+      "yield": {
+        "protocol": "usd-ai",
+        "position_kind": "vault",
+        "principal": "100000.00",
+        "reward_assets": [
+          "USDAI",
+          "ARB"
+        ],
+        "apr": "0.080",
+        "apy": "0.083",
+        "lockup": {
+          "is_locked": false
+        }
+      }
+    }
+  ]
+}

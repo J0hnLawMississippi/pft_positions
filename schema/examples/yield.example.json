@@ -43,9 +43,7 @@
         "cid": "bafkreie4vsxv7skua2y2h3b4x5xmhtc2asrbh7"
       }
     ],
-    "confidence": 0.92,
-    "completeness": 0.90,
-    "content_hash": "db0be094064b7c9d0bf4ba280f83f0f2ad7d95af20c08d2c1a074fe8dbf98088"
+    "content_hash": "6a8ccc332602436844e2b7b1eba6d1c8ab223e51e36c67570c64a66767820939"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -77,8 +75,7 @@
       "pnl_unrealized": "36720.00",
       "pnl_realized": "8200.00",
       "risk": {
-        "conviction": 0.67,
-        "horizon": "long_term",
+        "liquidation_price": "0.00",
         "value_at_risk_1d": "15240.00"
       },
       "yield": {
@@ -126,8 +123,7 @@
       "pnl_unrealized": "5200.00",
       "pnl_realized": "0.00",
       "risk": {
-        "conviction": 0.74,
-        "horizon": "position",
+        "liquidation_price": "0.00",
         "value_at_risk_1d": "3100.00"
       },
       "yield": {

@@ -31,9 +31,7 @@
         "endpoint": "private/get_positions"
       }
     ],
-    "confidence": 0.98,
-    "completeness": 0.95,
-    "content_hash": "5bfca4f3fc9d1e34d06f7bec7405dd8fcb563615eeb9ab53de2637675c59189e"
+    "content_hash": "53202dda93a8c398bdcc8fb575c9928f4b7f30ccd86115ca61ba0b720fc44517"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -69,8 +67,7 @@
       "pnl_unrealized": "20650.00",
       "pnl_realized": "-1220.00",
       "risk": {
-        "conviction": 0.71,
-        "horizon": "position",
+        "liquidation_price": "0.00",
         "value_at_risk_1d": "9870.00"
       },
       "option": {

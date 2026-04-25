@@ -16,8 +16,6 @@ Every snapshot must include a top-level `provenance` object with:
 
 - `collector`: identity and software version of the collector/publisher
 - `sources`: one or more source records (API, wallet, manual, or derived)
-- `confidence`: publisher confidence score in `[0, 1]`
-- `completeness`: declared snapshot coverage in `[0, 1]`
 - `content_hash`: SHA-256 of the canonical JSON payload used for integrity checks
 
 Each source entry should include:
@@ -36,6 +34,18 @@ Each source entry should include:
 - `valuation_ccy` is explicit and required per position.
 - `notional_value`, `mark_price`, and PnL values are normalized into the snapshot's declared valuation context.
 - Exchange metadata should map to CCXT conventions using `ccxt.exchange_id`, `ccxt.market_symbol`, and related IDs.
+- `risk` is required per position and contains `liquidation_price` and `value_at_risk_1d`.
+
+## Canonical Hash Rule
+
+`provenance.content_hash` is computed by:
+
+1. Parsing the snapshot JSON.
+2. Omitting `provenance.content_hash` from the object.
+3. Serializing canonical JSON with recursive object-key sorting, compact separators, preserved array order, and UTF-8 encoding.
+4. Computing lowercase SHA-256 hex over those canonical bytes.
+
+This avoids circular hashing and makes validation deterministic across whitespace and object key ordering differences.
 
 ## Instrument Coverage in v0
 

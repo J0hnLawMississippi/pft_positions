@@ -26,7 +26,7 @@ Position object (core):
 - `position_id`, `instrument_type`, `asset_class`, `venue`, `account_ref`
 - `side`, `quantity`, `unit`, `valuation_ccy`
 - `mark_price`, `notional_value`, `cost_basis`, `pnl_unrealized`, `pnl_realized`
-- `risk` (includes `conviction`, `horizon`)
+- `risk` (includes `liquidation_price`, `value_at_risk_1d`)
 - optional instrument blocks:
   - `delta_one`
   - `option`
@@ -44,7 +44,6 @@ Position object (core):
   - `source_id`: stable source identifier (for example `ccxt:binance`, `ccxt:deribit`, `rpc:arbitrum`)
   - `fetched_at`: RFC3339 UTC timestamp
   - optional evidence refs (`request_id`, `endpoint`, `tx_hash`, `cid`)
-- `provenance.confidence` and `provenance.completeness` are bounded `[0, 1]`.
 - `provenance.content_hash` is SHA-256 (hex) of canonical payload bytes.
 
 ### Normalization
@@ -94,9 +93,7 @@ Position object (core):
         "endpoint": "privatePostInfo"
       }
     ],
-    "confidence": 0.96,
-    "completeness": 0.93,
-    "content_hash": "a9f2ad38f3d9c6d16f2d1496d4ffac8f9017ae35d0f8f291e7650f2f517f0d03"
+    "content_hash": "b9e81aa92180c160f232722414f56a98d44331b803c9abed63521a9c4ddab6eb"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -132,8 +129,8 @@ Position object (core):
       "pnl_unrealized": "7418.63",
       "pnl_realized": "1200.15",
       "risk": {
-        "conviction": 0.78,
-        "horizon": "swing"
+        "liquidation_price": "58640.2",
+        "value_at_risk_1d": "8421.25"
       },
       "delta_one": {
         "symbol": "BTCUSDT",
@@ -169,8 +166,8 @@ Position object (core):
       "pnl_unrealized": "14724.00",
       "pnl_realized": "-850.00",
       "risk": {
-        "conviction": 0.62,
-        "horizon": "intraday"
+        "liquidation_price": "241.10",
+        "value_at_risk_1d": "19210.00"
       },
       "delta_one": {
         "symbol": "SOL-PERP",
@@ -214,9 +211,7 @@ Position object (core):
         "endpoint": "private/get_positions"
       }
     ],
-    "confidence": 0.98,
-    "completeness": 0.95,
-    "content_hash": "5bfca4f3fc9d1e34d06f7bec7405dd8fcb563615eeb9ab53de2637675c59189e"
+    "content_hash": "53202dda93a8c398bdcc8fb575c9928f4b7f30ccd86115ca61ba0b720fc44517"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -252,8 +247,8 @@ Position object (core):
       "pnl_unrealized": "20650.00",
       "pnl_realized": "-1220.00",
       "risk": {
-        "conviction": 0.71,
-        "horizon": "position"
+        "liquidation_price": "0.00",
+        "value_at_risk_1d": "9870.00"
       },
       "option": {
         "underlying": "BTC",
@@ -316,9 +311,7 @@ Position object (core):
         "fetched_at": "2026-04-24T10:10:03Z"
       }
     ],
-    "confidence": 0.92,
-    "completeness": 0.90,
-    "content_hash": "db0be094064b7c9d0bf4ba280f83f0f2ad7d95af20c08d2c1a074fe8dbf98088"
+    "content_hash": "6a8ccc332602436844e2b7b1eba6d1c8ab223e51e36c67570c64a66767820939"
   },
   "normalization": {
     "numeric_encoding": "decimal-string",
@@ -350,8 +343,8 @@ Position object (core):
       "pnl_unrealized": "36720.00",
       "pnl_realized": "8200.00",
       "risk": {
-        "conviction": 0.67,
-        "horizon": "long_term"
+        "liquidation_price": "0.00",
+        "value_at_risk_1d": "15240.00"
       },
       "yield": {
         "protocol": "binance-simple-earn",
@@ -388,8 +381,8 @@ Position object (core):
       "pnl_unrealized": "5200.00",
       "pnl_realized": "0.00",
       "risk": {
-        "conviction": 0.74,
-        "horizon": "position"
+        "liquidation_price": "0.00",
+        "value_at_risk_1d": "3100.00"
       },
       "yield": {
         "protocol": "usd-ai",

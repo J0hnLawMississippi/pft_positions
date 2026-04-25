@@ -1,0 +1,18 @@
+{
+  "source_type": "api",
+  "source_id": "fixture:delta-one",
+  "fetched_at": "2026-04-24T10:00:00Z",
+  "venue": "binance",
+  "account": "acct:fixture:delta",
+  "payload": {
+    "symbol": "BTCUSDT",
+    "positionSide": "LONG",
+    "positionAmt": "1.00",
+    "entryPrice": "65000.00",
+    "markPrice": "70000.00",
+    "unRealizedProfit": "5000.00",
+    "liquidationPrice": "50000.00",
+    "leverage": "2"
+  },
+  "normalizes_to": "../delta-one.json"
+}

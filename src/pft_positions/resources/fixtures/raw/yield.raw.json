@@ -1,0 +1,9 @@
+{
+  "source_type": "manual",
+  "source_id": "fixture:yield",
+  "fetched_at": "2026-04-24T10:10:00Z",
+  "venue": "usd-ai",
+  "account": "0x0000000000000000000000000000000000000001",
+  "payload": {"chain_id": 42161, "network": "arbitrum", "vault": "usd-ai", "asset": "USDAI", "shares": "100000.00", "share_price": "1.0000", "principal": "100000.00", "apr": "0.080", "apy": "0.083", "reward_assets": ["USDAI", "ARB"]},
+  "normalizes_to": "../yield.json"
+}

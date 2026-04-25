@@ -1,0 +1,71 @@
+{
+  "schema_version": "position-snapshot.v0",
+  "spec_date": "2026-04",
+  "snapshot_id": "snap_fixture_delta_one",
+  "as_of": "2026-04-24T10:00:00Z",
+  "published_at": "2026-04-24T10:00:01Z",
+  "publisher": {
+    "entity_id": "fixture-publisher",
+    "entity_type": "service"
+  },
+  "group_context": {
+    "group_id": "fixture-group",
+    "snapshot_scope": "network",
+    "valuation_ccy": "USD"
+  },
+  "provenance": {
+    "collector": {
+      "id": "pft-positions-fixtures",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "source_type": "manual",
+        "source_id": "fixture:delta-one",
+        "fetched_at": "2026-04-24T10:00:00Z"
+      }
+    ],
+    "content_hash": "f2193869b5c4127fba723d4eb98a508ddb61d81b871d3625f04d6f3f497883ad"
+  },
+  "normalization": {
+    "numeric_encoding": "decimal-string",
+    "timestamp_encoding": "rfc3339-utc",
+    "pnl_sign_convention": "profit-positive",
+    "quantity_sign_convention": "side-and-positive-quantity"
+  },
+  "positions": [
+    {
+      "position_id": "fixture-btc-perp",
+      "instrument_type": "delta_one",
+      "asset_class": "crypto",
+      "venue": {
+        "venue_id": "binance",
+        "venue_type": "cex"
+      },
+      "account_ref": "acct:fixture:delta",
+      "ccxt": {
+        "exchange_id": "binance",
+        "market_symbol": "BTC/USDT:USDT"
+      },
+      "side": "long",
+      "quantity": "1.00",
+      "unit": "BTC",
+      "valuation_ccy": "USD",
+      "mark_price": "70000.00",
+      "notional_value": "70000.00",
+      "cost_basis": "65000.00",
+      "pnl_unrealized": "5000.00",
+      "pnl_realized": "0.00",
+      "risk": {
+        "liquidation_price": "50000.00",
+        "value_at_risk_1d": "3500.00"
+      },
+      "delta_one": {
+        "symbol": "BTCUSDT",
+        "contract_kind": "perpetual",
+        "entry_price": "65000.00",
+        "leverage": "2"
+      }
+    }
+  ]
+}
